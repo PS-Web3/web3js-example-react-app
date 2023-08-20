@@ -1,9 +1,8 @@
 import { Web3PromiEvent } from 'web3-core';
 import {SendSignedTransactionEvents} from 'web3-eth';
-import { Receipt} from 'web3-types';
 import {web3} from './web3';
-import {DataFormat} from "web3-utils";
-import {Web3Account} from "web3-eth-accounts";
+import { DataFormat, TransactionReceipt } from 'web3';
+import { Web3Account } from 'web3-eth-accounts';
 
 export class Wallet {
 
@@ -14,7 +13,7 @@ export class Wallet {
 	public async sendEther(
 		address: string,
 		value: string,
-	): Promise<Web3PromiEvent<Receipt, SendSignedTransactionEvents<DataFormat>>> {
+	): Promise<Web3PromiEvent<TransactionReceipt, SendSignedTransactionEvents<DataFormat>>> {
 
 		const tx = {
 			from: this.account.address,
