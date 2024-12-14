@@ -1,7 +1,7 @@
-import React, {useState, useCallback, ChangeEvent, useEffect} from 'react'
-import {Wallet} from '../web3/wallet'
-import {web3} from '../web3/web3'
-import {Input} from './Input'
+import React, { useState, useCallback, ChangeEvent, useEffect } from 'react'
+import { Wallet } from '../web3/wallet'
+import { web3 } from '../web3/web3'
+import { Input } from './Input'
 
 export const WalletExample = () => {
     const [wallet, setWallet] = useState<Wallet>()
@@ -29,7 +29,7 @@ export const WalletExample = () => {
     }, [setToAddress, getToAddressBalance])
 
     const handleSendEther = useCallback(async () => {
-        await wallet?.sendEther(toAddress, web3.utils.toWei(0.001, 'ether'))
+        await wallet?.sendEther(toAddress, web3.utils.toWei(0.02, 'ether'))
         getToAddressBalance()
         getBalance()
     }, [toAddress, wallet, getToAddressBalance, getBalance])
@@ -56,7 +56,7 @@ export const WalletExample = () => {
             <div className='CardBody'>
                 <div>
                     <div className='Block'>
-                        <Input label='Set Private Key:' value={pk} onChange={createNewWallet}/>
+                        <Input label='Set Private Key:' value={pk} onChange={createNewWallet} />
                         {wallet && (
                             <>
                                 <div>You address: {wallet && wallet.getAccount().address}</div>
@@ -70,8 +70,8 @@ export const WalletExample = () => {
                         {balance && (
                             <div>
                                 <div className='Block'>
-                                    <Input label='Send 0.001ETH to this address:' value={toAddress}
-                                           onChange={handleChangeToAddress}/>
+                                    <Input label='Send 0.02ETH to this address:' value={toAddress}
+                                        onChange={handleChangeToAddress} />
                                 </div>
                                 <div className='Block'>
                                     <button type='button' onClick={handleSendEther}>SEND ETHER</button>
